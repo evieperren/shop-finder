@@ -11,6 +11,7 @@ db.once('open', function() {
     
     // Routes 
     app.use(require('./routers'))
+    console.log(' i am working here')
 })
 
 module.exports = app

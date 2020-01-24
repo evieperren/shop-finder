@@ -3,7 +3,10 @@ const Router = express.Router
 
 const router = new Router()
 
-router.get('/shop', require('./controller/ShopController'))
-router.get('/purchase', require('./controller/PurchaseController'))
+router.use('/shop', require('./controller/ShopController'))
+router.use('/purchase', () => (require('./controller/PurchaseController')))
 
+router.get('/trial', (req, res, next) => {
+    console.log('made it to routers page')
+})
 module.exports = router
