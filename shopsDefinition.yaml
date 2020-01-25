@@ -53,7 +53,7 @@ paths:
         200:
           description: "Successful"
           schema: 
-            $ref: "#/definitions/Shop/{id}"
+            $ref: "#/definitions/Shop"
             
     delete:
       summary: "Deletes a shop"
@@ -72,7 +72,7 @@ paths:
         200: 
           description: "Deleted"
           schema:   
-            $ref: "#/definitions/Shop/{id}"
+            $ref: "#/definitions/Shop"
         404:
           description: "Shop not found"
             
@@ -87,21 +87,9 @@ paths:
         200:
           description: "Successful"
           schema: 
-            $ref: "#/definitions/Shop/{id}"
+            $ref: "#/definitions/Shop"
 
 
-securityDefinitions:
-  petstore_auth:
-    type: "oauth2"
-    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
-    flow: "implicit"
-    scopes:
-      write:pets: "modify pets in your account"
-      read:pets: "read your pets"
-  api_key:
-    type: "apiKey"
-    name: "api_key"
-    in: "header"
 definitions:
   Shop: 
     type: "object"
@@ -126,18 +114,3 @@ definitions:
           town: 
             type: "string"
             example: "Andover"
-  
-        
-  ApiResponse:
-    type: "object"
-    properties:
-      code:
-        type: "integer"
-        format: "int32"
-      type:
-        type: "string"
-      message:
-        type: "string"
-externalDocs:
-  description: "Find out more about Swagger"
-  url: "http://swagger.io"
