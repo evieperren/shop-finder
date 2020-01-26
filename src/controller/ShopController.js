@@ -33,15 +33,23 @@ ShopController.post('/create', (req, res, next) => {
 })
 
 
-// RETURN A SINGLE SHOP - shops/list/:shop_Id
-ShopController.get('/:id', (req, res, next) => {
-    Shop.findById(req.params.id)
-        .then((shopFound) => res.send(shopFound))
-
-    console.log(req.params)
+// RETURN A SINGLE SHOP - shops/list/:shop_Id?
+ShopController.get('/:shop_id', (req, res, next) => {
+    Shop.findById(req.params.shop_id)
+        .then((shopFound) => {res.send(shopFound)})
     console.log("returned a single shop")
 })
 
 
 
+// UPDATE A SINGLE SHOP - shops/list/:shop_id
+ShopController.put('/:shop_id', (req, res, next) => {
+    Shop.findById(req.params.shop_id)
+        .then((shopFound) => {
+            shopFound.location.postcode = "BH78 5ED"
+            shopFound.location.town = "Bournemouth"
+            res.send(shopFound)
+        })
+    console.log("Updated a single shop")
+})
 module.exports = ShopController
