@@ -1,21 +1,30 @@
 const express = require('express')
 const Router = express.Router
-
+const Shop = require('../models/shopSchema')
 const ShopController = new Router()
 
-ShopController.get('/clothes', (req, res, next) => {
-    console.log('clothes section')
-    res.send('text')
-    // next()
+// LIST ALL SHOPS - shops/list
+ShopController.get('/list', (req, res, next) => {
+    console.log('List all shops')
+    
+    res.send('yay')
 })
 
-ShopController.get('/groceries', (req, res, next) => {
-    console.log('Tesco, asda, aldi, waitrose')
-    // next()
-})
 
-ShopController.get('/home', (req, res, next) => {
-    console.log('Homebase, Wickes, John Lewis')
+
+// CREATE A SHOP - shops/create
+ShopController.post('/create', (req, res, next) => {
+    const Topshop = new Shop({
+        name: "Topshop",
+        type: "Clothes", 
+        location: {
+            postcode: "SP10 3NG",
+            town: "Andover"
+        }
+    })
+    res.send(Topshop)
+    Topshop.save()
+    console.log("created a shop")
 })
 
 module.exports = ShopController
