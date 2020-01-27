@@ -1,33 +1,38 @@
 const express = require('express')
 const Router = express.Router
-const Shop = require('../models/shopSchema')
-const ShopController = new Router()
+const mongoose = require('mongoose')
 
-// LIST ALL SHOPS - shops/list
-ShopController.get('/list', (req, res, next) => {
-    Shop.find(function (err, Shop) {
-        if (err)
-        res.send(err);
-        
-        res.json(Shop);
-    });
-    console.log('List all shops')
-    next()
-})
+const ShopSchema = require('../models/shopSchema')
+const ShopController = new Router()
+const shopModel = mongoose.model('shop', ShopSchema)
+
+
+
 
 // CREATE A SHOP - shops/create
 ShopController.post('/create', (req, res, next) => {
-    const Topshop = new Shop({
-        name: "Topshop",
-        type: "Clothes", 
+    const shop = new shopModel({
+        name: req.query.name, 
+        type: req.query.type,
         location: {
-            postcode: "SP10 3NG",
-            town: "Andover"
-        }
+            postcode: req.query.postcode,
+            town: req.query.town,
+        } 
     })
-    res.send(Topshop)
-    Topshop.save()
+
+    res.send(req.query)
+    shop.save()
     console.log("created a shop")
+    next(shop)
+})
+
+// RETURN ALL SHOPS
+ShopController.get('/', (req, res, next) => {
+    shopModel.find((err, result) => {
+        res.json(result)
+    })
+
+    console.log('List all shops')
     next()
 })
 

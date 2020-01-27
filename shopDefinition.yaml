@@ -27,27 +27,6 @@ paths:
           schema: 
             $ref: "#/definitions/shop"
 
-    post: 
-      tags: 
-      - "Shop"
-      summary: "Create shop"
-      operationId: "addShop"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "Shop object that needs to be added to the store"
-        required: true
-        schema:
-          $ref: "#/definitions/shop"
-      responses:
-        200:
-          description: "Successful"
-          schema: 
-            $ref: "#/definitions/shop"
 
     put: 
       tags: 
@@ -87,6 +66,31 @@ paths:
             $ref: "#/definitions/shop/shopId"
         404:
           description: "Shop not found"
+          
+  /create:
+    post: 
+      tags: 
+      - "Shop"
+      summary: "Create shop"
+      operationId: "addShop"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Shop object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/shop"
+      responses:
+        200:
+          description: "Successful"
+          schema: 
+            $ref: "#/definitions/shop"
+
+
             
   # /shop/shopId:
   #   get: 
