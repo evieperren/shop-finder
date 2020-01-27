@@ -38,14 +38,14 @@ ShopController.get('/', (req, res, next) => {
 
 // RETURN A SINGLE SHOP - shops/:shop_Id?
 ShopController.get('/:shop_id', (req, res, next) => {
-    Shop.findById(req.params.shop_id)
+    shopModel.findById(req.params.shop_id)
         .then((shopFound) => {res.send(shopFound)})
     console.log("returned a single shop")
 })
 
 // UPDATE A SINGLE SHOP - shops/:shop_id
 ShopController.put('/:shop_id', (req, res, next) => {
-    Shop.findById(req.params.shop_id)
+    shopModel.findById(req.params.shop_id)
         .then((shopFound) => {
             shopFound.location.postcode = "NH78 7FD"
             shopFound.location.town = "Northampton"
@@ -57,7 +57,7 @@ ShopController.put('/:shop_id', (req, res, next) => {
 
 // DELETE A SINGLE SHOP - shops/
 ShopController.delete('/:shop_id', (req, res, next) => {
-    Shop.findByIdAndDelete(req.params.shop_id) 
+    shopModel.findByIdAndDelete(req.params.shop_id) 
     console.log("Deleted a single shop")
     res.send(`Shop: ${req.params.name} has been deleted from database`)
 })
