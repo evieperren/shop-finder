@@ -1,7 +1,9 @@
-fetch('http://localhost:3020/shops').then((response) => {
-  return response.json();
-}).then((myJson) => {
-  console.log(myJson);
+const fetch = require('node-fetch')
+
+fetch('http://localhost:3020/shops')
+.then((res) => {
+  console.log(res.json())
+  return res.text()
 }).catch((error) => {
-  console.error(error)
+  console.error(`Error: ${error}`)
 })
