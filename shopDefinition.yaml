@@ -91,29 +91,6 @@ paths:
             $ref: "#/definitions/shop"
 
 
-            
-  # /shop/shopId:
-  #   get: 
-  #     tags: 
-  #     - "Shop"
-  #     summary: "List shops" 
-  #     consumes:
-  #     - "application/json"
-  #     produces:
-  #     - "application/json"
-  #     parameters:
-  #     - name: "shopId"
-  #       in: "path"
-  #       description: "Shop id to find"
-  #       required: true
-  #       type: "integer"
-  #     responses:
-  #       200:
-  #         description: "Successful"
-  #         schema: 
-  #           $ref: "#/definitions/shop"
-
-
 definitions:
   shop: 
     type: "object"

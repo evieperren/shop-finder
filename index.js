@@ -1,3 +1,3 @@
 const server = require('./src')
 
-server.listen(3001, () => { console.log("Shop Finder app listening")})
+server.listen(3020, () => { console.log("Shop Finder app listening")})

@@ -32,8 +32,8 @@ ShopController.get('/', (req, res, next) => {
         res.json(result)
     })
 
-    console.log('List all shops')
-    next()
+    // console.log('List all shops')
+    // next()
 })
 
 // RETURN A SINGLE SHOP - shops/:shop_Id?
