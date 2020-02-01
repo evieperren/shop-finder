@@ -12,7 +12,7 @@ db.once('open', function () {
     app.use(bodyParser.urlencoded({ extended : true }))
     
     // Routes 
-    app.use(require('./routers'))
+    app.use('/api', require('./routers'))
     console.log(' i am working here')
 })
 

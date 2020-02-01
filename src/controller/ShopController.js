@@ -9,8 +9,8 @@ const shopModel = mongoose.model('shop', ShopSchema)
 
 
 
-// CREATE A SHOP - shops/create
-ShopController.post('/create', (req, res, next) => {
+// CREATE A SHOP - shops/
+ShopController.post('/', (req, res, next) => {
     const shop = new shopModel({
         name: req.query.name, 
         type: req.query.type,
@@ -31,9 +31,6 @@ ShopController.get('/', (req, res, next) => {
     shopModel.find((err, result) => {
         res.json(result)
     })
-
-    // console.log('List all shops')
-    // next()
 })
 
 // RETURN A SINGLE SHOP - shops/:shop_Id?

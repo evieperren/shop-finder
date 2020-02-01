@@ -1,0 +1,122 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Shop API"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:3020"
+basePath: "/api/"
+schemes:
+  - "http"
+
+paths:
+  /shops:
+    post:
+      tags:
+      - "Shop"
+      summary: "Add a new shop"
+      description: ""
+      operationId: "addShop"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Shop object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/shop"
+      responses:
+        200: 
+          description: "Successful"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "Shop"
+      summary: "Update an shop"
+      description: ""
+      operationId: "updatePet"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Shop object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/shop"
+      responses:
+        200: 
+          description: "Successful"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Shop not found"
+        405:
+          description: "Validation exception"
+
+  /shop/{shop_id}:
+    get:
+      tags:
+      - "Shop"
+      summary: "Find shop by ID"
+      description: "Returns a single shop"
+      operationId: "getShopById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "shop_id"
+        in: "path"
+        description: "ID of shop to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/shop"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Shop not found"
+    delete:
+      tags:
+      - "Shop"
+      summary: "Deletes a shop by ID"
+      description: ""
+      operationId: "deleteShop"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "shop_id"
+        in: "path"
+        description: "Shop id to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Shop not found"
+
+definitions:
+  shops:
+    type: "object"
+    properties:
+      shop_id:
+        type: "integer"
+        format: "int64"
