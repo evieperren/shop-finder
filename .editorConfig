@@ -1,0 +1,10 @@
+# this file is used to ensure your application consistent coding styles. It it to be used when multiple developers work on the same project across various IDEs
+
+# This indicates this is the root editor config, other applications may have more than one
+root = true
+# Matches js files with brace expansion notation
+[*.{js}]
+
+# 4 tab indentation
+indent_style = tab
+indent_size = 2
