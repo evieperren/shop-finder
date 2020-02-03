@@ -16,13 +16,6 @@ db.once('open', function () {
     app.use('/api', require('./routers'))
     console.log(' i am working here')
 
-    ;(async () => {
-        const response = await axios.get('http://localhost:3020/api/shops')
-        
-        console.log(response.data.forEach(shop => {
-            console.log(shop)
-        }))
-    })()
 })
 
-// module.exports = app
+module.exports = app
