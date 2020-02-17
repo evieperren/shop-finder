@@ -44,8 +44,10 @@ ShopController.get('/:shop_id', (req, res, next) => {
 ShopController.put('/:shop_id', (req, res, next) => {
     shopModel.findById(req.params.shop_id)
         .then((shopFound) => {
-            shopFound.location.postcode = "NH78 7FD"
-            shopFound.location.town = "Northampton"
+            shopFound.name = req.query.name
+            shopFound.type = req.query.type
+            shopFound.location.postcode = req.query.postcode
+            shopFound.location.town = req.query.town
             res.send(shopFound)
             shopFound.save()
         })
