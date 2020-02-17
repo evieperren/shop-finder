@@ -6,9 +6,6 @@ const ShopSchema = require('../models/shopSchema')
 const ShopController = new Router()
 const shopModel = mongoose.model('shop', ShopSchema)
 
-
-
-
 // CREATE A SHOP - shops/
 ShopController.post('/', (req, res, next) => {
     const shop = new shopModel({
