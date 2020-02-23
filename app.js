@@ -7,6 +7,8 @@ const deleteShopButton = document.querySelector('.delete-single__button')
 const createShopButton = document.querySelector('.create-single__button')
 
 const responseContainer = document.querySelector('.shop-container')
+
+// get all
 getAllShopsButton.addEventListener('click', function() {
   console.log('Get all shops request')
   axios
@@ -15,8 +17,8 @@ getAllShopsButton.addEventListener('click', function() {
     .catch(error => console.log(new Error('Error', error))) 
 })
 
+// get single
 getSingleShopButton.addEventListener('click', function() {
-  // display a single shop
   console.log('Get single shop request')
   axios
   .get('http://localhost:3020/api/shops/:shopId')
@@ -24,6 +26,7 @@ getSingleShopButton.addEventListener('click', function() {
   .catch(error => console.log(new Error('Error', error))) 
 })
 
+// update
 updateShopButton.addEventListener('click', function() {
   console.log('Update shop request')
   axios
@@ -32,15 +35,18 @@ updateShopButton.addEventListener('click', function() {
   .catch(error => console.log(new Error('Error', error))) 
 })
 
+// delete
 deleteShopButton.addEventListener('click', function() {
   console.log('Delete shop request');
   axios
-  .delete('http://localhost:3020/api/shops/:shopId', {
+  .delete('http://localhost:3020/api/shops/5e2f4bd3bac7d7174de10160', {
     params: 'shopID'
   })
   .then(res => {shopOutput(res)})
   .catch(error => console.log(new Error('Error', error))) 
 })
+
+// create
 createShopButton.addEventListener('click', function() {
   console.log('create shop request');
 
@@ -58,7 +64,7 @@ createShopButton.addEventListener('click', function() {
     type: typeField.value
   } )
     .then(response => {
-    shopOutput(response.config)
+      responseContainer.innerHTML = JSON.stringify(response.data)
       response.save()
     })
     .catch(error => console.log(new Error('Error', error)))
