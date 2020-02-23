@@ -16,8 +16,8 @@ h1 {
 
 .crud-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  column-gap: 10px; }
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 20px; }
   .crud-container section {
     display: inline-block; }
     .crud-container section label {
