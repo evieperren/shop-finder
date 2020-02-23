@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "build": "node-sass src/styles/styles.scss src/main.css --watch"
   },
-  "author": "",
+  "author": "Evie Butland",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "jest": "^25.1.0",
+    "node-sass": "^4.13.1",
     "nodemon": "^2.0.2"
   }
 }
