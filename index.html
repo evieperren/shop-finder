@@ -12,11 +12,11 @@
     <section class="crud-container">
       <section class="get-all">
         <label class="all-shops__label" for="all-shops__button">Return all shops</label>
-        <button class="all-shops__button">Searcg</button>
+        <button class="all-shops__button">Search</button>
       </section>
       <section class="get-single">
         <label for="input-field">Return single shop</label>
-        <input class="input-field" placeholder="Enter ID of shop"/>
+        <input class="input-field get-single-input" placeholder="Enter ID of shop"/>
         <button class="get-single__button">Search</button>
       </section>
       <section class="create-single">
@@ -29,7 +29,7 @@
       </section>
       <section class="update-single">
         <label for="input-field">Update a shop</label>
-        <input class="input-field" placeholder="Enter ID of shop"/>
+        <input class="input-field update-by-id-field" placeholder="Enter ID of shop"/>
         <input class="input-field" placeholder="New name"/>
         <input class="input-field" placeholder="New postcode"/>
         <input class="input-field" placeholder="New town"/>
@@ -38,11 +38,18 @@
       </section>
       <section class="delete-single">
         <label for="input-field">Enter an ID of a shop to delete</label>
-        <input class="input-field" placeholder="Enter ID of shop"/>
+        <input class="input-field delete-by-id-field" placeholder="Enter ID of shop"/>
         <button class="delete-single__button">Delete shop</button>
       </section>
     </section>
-    <section class="shop-container"></section>
+    <section class="shop-container">
+      <div>
+        <h2 class="response-status"></h2>
+      </div>
+      <div class="response-data">
+        <ul class="response-data__list"></ul>
+      </div>
+    </section>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="app.js"></script>
   </body>
