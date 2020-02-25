@@ -14,11 +14,6 @@ const UpdateByIdInput = document.querySelector('.update-by-id-field')
 
 const deleteByIdInput = document.querySelector('.delete-by-id-field')
 
-
-const updateNameInput = document.querySelector('.update-name')
-const updatePostcodeInput = document.querySelector('.update-postcode')
-const updateTownInput = document.querySelector('.update-town')
-const updateTypeInput = document.querySelector('.update-type')
 // get all
 getAllShopsButton.addEventListener('click', function() {
   console.log('Get all shops request')
@@ -35,13 +30,7 @@ getSingleShopButton.addEventListener('click', function() {
   .get('http://localhost:3020/api/shops/' + shopId)
   .then(res => {
     const shop = JSON.parse(res.request.response)
-    responseStatus.innerHTML = `Status: ${res.status}`
-    responseList.innerHTML = `
-      <li>Name: ${shop.name}</li>
-      <li>Town: ${shop.location.town}</li>
-      <li>Postcode: ${shop.location.postcode}</li>
-      <li>Type of store: ${shop.type}</li>
-    `
+    createOutput(shop)
   })
   .catch(error => console.log(new Error('Error', error))) 
 })
@@ -49,6 +38,10 @@ getSingleShopButton.addEventListener('click', function() {
 // update
 updateShopButton.addEventListener('click', function() {
   const shopId = UpdateByIdInput.value
+  const updateNameInput = document.querySelector('.update-name')
+  const updatePostcodeInput = document.querySelector('.update-postcode')
+  const updateTownInput = document.querySelector('.update-town')
+  const updateTypeInput = document.querySelector('.update-type')
 
   axios
   .put('http://localhost:3020/api/shops/' + shopId, {
@@ -61,6 +54,8 @@ updateShopButton.addEventListener('click', function() {
   })
   .then(res => {
     console.log(res)
+    const shop = JSON.parse(res.request.response)
+    createOutput(shop)
   })
   .catch(error => console.log(new Error('Error', error))) 
 })
@@ -94,13 +89,13 @@ createShopButton.addEventListener('click', function() {
     },
     type: typeField.value
   } )
-    .then(response => {
-      responseContainer.innerHTML = JSON.stringify(response.data)
-      response.save()
-    })
-    .catch(error => console.log(new Error('Error', error)))
-
+  .then(res => {
+    const shop = JSON.parse(res.request.response)
+    createOutput(shop)
+  })
+  .catch(error => console.log(new Error('Error', error)))
 })
+
 function shopOutput(res){
   responseStatus.innerHTML = `Status: ${res.status}`
 
@@ -109,6 +104,7 @@ function shopOutput(res){
   let shopLocationTown = ''
 
   for(const data of res.data){
+    console.log(data)
     shopName = data.name
     shopLocationPostcode = data.location.postcode
     shopLocationTown = data.location.town
@@ -120,4 +116,14 @@ function createElement(type, html, parent){
   const newElement = document.createElement(type)
   newElement.innerHTML = html
   parent.appendChild(newElement)
+}
+
+function createOutput(object){
+  responseStatus.innerHTML = `Status: ${res.status}`
+  responseList.innerHTML = `
+    <li>Name: ${object.name}</li>
+    <li>Town: ${object.location.town}</li>
+    <li>Postcode: ${object.location.postcode}</li>
+    <li>Type of store: ${object.type}</li>
+  `
 }
