@@ -14,6 +14,11 @@ const UpdateByIdInput = document.querySelector('.update-by-id-field')
 
 const deleteByIdInput = document.querySelector('.delete-by-id-field')
 
+
+const updateNameInput = document.querySelector('.update-name')
+const updatePostcodeInput = document.querySelector('.update-postcode')
+const updateTownInput = document.querySelector('.update-town')
+const updateTypeInput = document.querySelector('.update-type')
 // get all
 getAllShopsButton.addEventListener('click', function() {
   console.log('Get all shops request')
@@ -44,11 +49,19 @@ getSingleShopButton.addEventListener('click', function() {
 // update
 updateShopButton.addEventListener('click', function() {
   const shopId = UpdateByIdInput.value
-  console.log(shopId)
 
   axios
-  .put('http://localhost:3020/api/shops/' + shopId)
-  .then(res => console.log(res))
+  .put('http://localhost:3020/api/shops/' + shopId, {
+    name: updateNameInput.value,
+    type: updateTypeInput.value,
+    location: {
+      postcode: updatePostcodeInput.value,
+      town: updateTownInput.value
+    }
+  })
+  .then(res => {
+    console.log(res)
+  })
   .catch(error => console.log(new Error('Error', error))) 
 })
 
