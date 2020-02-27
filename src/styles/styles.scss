@@ -13,6 +13,13 @@ h1 {
   padding: 10px;
   border-radius: 5px;
   margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+
+  & li {
+    list-style: none;
+    padding: 10px 0;
+  }
 }
 .crud-container {
   display: grid;
@@ -20,8 +27,6 @@ h1 {
   column-gap: 20px;;
 
   & section {
-    display: inline-block;
-
     & label {
       font-weight: bold;
     }
@@ -33,19 +38,75 @@ h1 {
       display: block;
       width: 90%;
     }
-    & button {
-        background-color: #fff;
-        padding: 10px;
-        border-radius: 5px;
-        font-size: 14px;
-        margin: 10px 0;
-    
-      &:hover {
-        background-color: rgb(214, 214, 214);
-        border-color: transparent;
-      }
+  }
+  // &__get-all{
+  //   display: none;
+  // }
+  // &__get-single{
+  //   display: none;
+  // }
+  // &__create-single{
+  //   display: none;
+  // }
+  // &__update-single{
+  //   display: none;
+  // }
+  // &__delete-single{
+  //   display: none;
+  // }
+}
+.show {
+  display: block;
+}
+.hide{
+  display: none;
+}
+.button {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  margin: 10px 0;
+  height: 40px;
+
+  &:hover {
+    background-color: rgb(214, 214, 214);
+    border-color: transparent;
+  }
+  &__clear-response{
+    &:hover {
+      background-color: lightcoral;
     }
   }
+  &__delete{
+    &:hover {
+      background-color: rgb(216, 60, 60);
+    }
+  }
+  &__update{
+    &:hover {
+      background-color: rgb(141, 202, 106);
+    }
+  }
+  &__create{
+    &:hover {
+      background-color: rgb(214, 137, 198);
+    }
+  }
+  &__get {
+    &:hover {
+      background-color: rgb(247, 178, 52);
+    }
+  }
+  &__all-shops{
+    &:hover {
+      background-color: rgb(33, 153, 153);
+    }
+  }
+}
+
+.response-successful {
+  color: rgb(141, 202, 106)
 }
 .result {
   display: block;

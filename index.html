@@ -10,45 +10,50 @@
   <body>
     <h1>Shop Finder</h1>
     <section class="crud-container">
-      <section class="get-all">
-        <label class="all-shops__label" for="all-shops__button">Return all shops</label>
-        <button class="all-shops__button">Search</button>
+      <button class="button button__all-shops" id="display-all-shops">Get all shops</button>
+      <button class="button button__get" id="display-get-shop">Get single shop</button>
+      <button class="button button__create" id="display-create-shop">Create shop</button>
+      <button class="button button__update" id="display-update-shop">Update shop</button>
+      <button class="button button__delete" id="display-delete-shop">Delete shop</button>
+
+      <section class="crud-container__get-all hide">
+        <label class="all-shops__label" for="all-shops">Return all shops</label>
+        <button class="button button__all-shops" id="all-shops">Search</button>
       </section>
-      <section class="get-single">
+      <section class="crud-container__get-single hide">
         <label for="input-field">Return single shop</label>
         <input class="input-field get-single-input" placeholder="Enter ID of shop"/>
-        <button class="get-single__button">Search</button>
+        <button class="button button__get" id="get-single">Search</button>
       </section>
-      <section class="create-single">
+      <section class="crud-container__create-single hide">
         <label for="input-field">Create a shop</label>
         <input class="input-field create-name-field" placeholder="New name"/>
         <input class="input-field create-postcode-field" placeholder="New postcode"/>
         <input class="input-field create-town-field" placeholder="New town"/>
         <input class="input-field create-type-field" placeholder="New type"/>
-        <button class="create-single__button">Create</button>
+        <button class="button button__create" id="create-shop">Create</button>
       </section>
-      <section class="update-single">
+      <section class="crud-container__update-single hide">
         <label for="input-field">Update a shop</label>
         <input class="input-field update-by-id-field" placeholder="Enter ID of shop"/>
         <input class="input-field update-name" placeholder="New name"/>
         <input class="input-field update-postcode" placeholder="New postcode"/>
         <input class="input-field update-town" placeholder="New town"/>
         <input class="input-field update-type" placeholder="New type"/>
-        <button class="update-single__button">Update shop</button>
+        <button class="button button__update" id="update-shop">Update shop</button>
       </section>
-      <section class="delete-single">
+      <section class="crud-container__delete-single hide">
         <label for="input-field">Enter an ID of a shop to delete</label>
         <input class="input-field delete-by-id-field" placeholder="Enter ID of shop"/>
-        <button class="delete-single__button">Delete shop</button>
+        <button class="button button__delete" id="delete-shop">Delete shop</button>
       </section>
     </section>
     <section class="shop-container">
       <div>
         <h2 class="response-status"></h2>
-      </div>
-      <div class="response-data">
         <ul class="response-data__list"></ul>
       </div>
+      <button class="button button__clear-response">Clear</button>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="app.js"></script>

@@ -12,32 +12,58 @@ h1 {
   border: 1px solid #dadada;
   padding: 10px;
   border-radius: 5px;
-  margin: 10px 0; }
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between; }
+  .shop-container li {
+    list-style: none;
+    padding: 10px 0; }
 
 .crud-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   column-gap: 20px; }
-  .crud-container section {
-    display: inline-block; }
-    .crud-container section label {
-      font-weight: bold; }
-    .crud-container section input {
-      padding: 10px;
-      font-size: 14px;
-      line-height: 16px;
-      margin: 10px 0;
-      display: block;
-      width: 90%; }
-    .crud-container section button {
-      background-color: #fff;
-      padding: 10px;
-      border-radius: 5px;
-      font-size: 14px;
-      margin: 10px 0; }
-      .crud-container section button:hover {
-        background-color: #d6d6d6;
-        border-color: transparent; }
+  .crud-container section label {
+    font-weight: bold; }
+  .crud-container section input {
+    padding: 10px;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 10px 0;
+    display: block;
+    width: 90%; }
+
+.show {
+  display: block; }
+
+.hide {
+  display: none; }
+
+.button {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  margin: 10px 0;
+  height: 40px; }
+  .button:hover {
+    background-color: #d6d6d6;
+    border-color: transparent; }
+  .button__clear-response:hover {
+    background-color: lightcoral; }
+  .button__delete:hover {
+    background-color: #d83c3c; }
+  .button__update:hover {
+    background-color: #8dca6a; }
+  .button__create:hover {
+    background-color: #d689c6; }
+  .button__get:hover {
+    background-color: #f7b234; }
+  .button__all-shops:hover {
+    background-color: #219999; }
+
+.response-successful {
+  color: #8dca6a; }
 
 .result {
   display: block;

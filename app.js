@@ -1,10 +1,10 @@
-const getAllShopsButton = document.querySelector('.all-shops__button')
-const getAllShopsResult = document.querySelector('.get-all__result')
+const getAllShopsButton = document.querySelector('#all-shops')
+const clearResponseButton = document.querySelector('.button__clear-response')
 
-const getSingleShopButton = document.querySelector('.get-single__button')
-const updateShopButton = document.querySelector('.update-single__button')
-const deleteShopButton = document.querySelector('.delete-single__button')
-const createShopButton = document.querySelector('.create-single__button')
+const getSingleShopButton = document.querySelector('#get-single')
+const updateShopButton = document.querySelector('#update-shop')
+const deleteShopButton = document.querySelector('#delete-shop')
+const createShopButton = document.querySelector('#create-shop')
 
 const responseList = document.querySelector('.response-data__list')
 const responseStatus = document.querySelector('.response-status')
@@ -29,8 +29,9 @@ getSingleShopButton.addEventListener('click', function() {
   axios
   .get('http://localhost:3020/api/shops/' + shopId)
   .then(res => {
-    const shop = JSON.parse(res.request.response)
-    createOutput(shop)
+    // const shop = JSON.parse(res.request.response)
+    // console.log(shop)
+    showShopsToUI(res)
   })
   .catch(error => console.log(new Error('Error', error))) 
 })
@@ -54,8 +55,7 @@ updateShopButton.addEventListener('click', function() {
   })
   .then(res => {
     console.log(res)
-    const shop = JSON.parse(res.request.response)
-    createOutput(shop)
+    showShopsToUI(res)
   })
   .catch(error => console.log(new Error('Error', error))) 
 })
@@ -90,8 +90,8 @@ createShopButton.addEventListener('click', function() {
     type: typeField.value
   } )
   .then(res => {
-    const shop = JSON.parse(res.request.response)
-    createOutput(shop)
+    console.log(res)
+    showShopsToUI(res)
   })
   .catch(error => console.log(new Error('Error', error)))
 })
@@ -103,8 +103,8 @@ function shopOutput(res){
   let shopLocationPostcode = ''
   let shopLocationTown = ''
 
+  console.log(res.data)
   for(const data of res.data){
-    console.log(data)
     shopName = data.name
     shopLocationPostcode = data.location.postcode
     shopLocationTown = data.location.town
@@ -118,12 +118,78 @@ function createElement(type, html, parent){
   parent.appendChild(newElement)
 }
 
-function createOutput(object){
-  responseStatus.innerHTML = `Status: ${res.status}`
-  responseList.innerHTML = `
-    <li>Name: ${object.name}</li>
-    <li>Town: ${object.location.town}</li>
-    <li>Postcode: ${object.location.postcode}</li>
-    <li>Type of store: ${object.type}</li>
-  `
+function showShopsToUI(result){
+  const returnedItem = JSON.parse(result.request.response)
+
+  if(responseList.innerHTML == ''){
+    if(result.status === 200){
+      responseStatus.className = 'response-successful'
+    }
+    responseStatus.innerHTML = `Status: ${result.status}`
+    responseList.innerHTML = `
+    <h3>Returned shop:</h3>
+    <section>
+      <li>Name: ${returnedItem.name}</li>
+      <li>Shop type: ${returnedItem.type}</li>
+      <li>Postcode: ${returnedItem.location.postcode}</li>
+      <li>Town: ${returnedItem.location.town}</li>
+    </section>`
+  } else {
+    responseList.innerHTML = ''
+  }
 }
+
+clearResponseButton.addEventListener('click', () => {
+  responseStatus.innerHTML = ''
+  responseList.innerHTML = ''
+})
+
+
+// display form
+const displayAllButton = document.querySelector('#display-all-shops')
+const displayGetShopButton = document.querySelector('#display-get-shop')
+const displayCreateShopButton = document.querySelector('#display-create-shop')
+const displayUpdateShopButton = document.querySelector('#display-update-shop')
+const displayDeleteShopButton = document.querySelector('#display-delete-shop')
+const containerGetAll = document.querySelector('.crud-container__get-all')
+const containerGetOne = document.querySelector('.crud-container__get-single')
+const containerCreate = document.querySelector('.crud-container__create-single')
+const containerUpdate = document.querySelector('.crud-container__update-single')
+const containerDelete = document.querySelector('.crud-container__delete-single')
+
+displayAllButton.addEventListener('click', () => {
+  if(containerGetAll.className === 'crud-container__get-all hide'){
+    containerGetAll.className = 'crud-container__get-all show'
+  } else {
+    containerGetAll.className = 'crud-container__get-all hide'
+  }
+})
+
+displayGetShopButton.addEventListener('click', () => {
+  if(containerGetOne.className === 'crud-container__get-single hide'){
+    containerGetOne.className = 'crud-container__get-single show'
+  } else {
+    containerGetOne.className = 'crud-container__get-single hide'
+  }
+})
+displayCreateShopButton.addEventListener('click', () => {
+  if(containerCreate.className === 'crud-container__create-single hide'){
+    containerCreate.className = 'crud-container__create-single show'
+  } else {
+    containerCreate.className = 'crud-container__create-single hide'
+  }
+})
+displayUpdateShopButton.addEventListener('click', () => {
+  if(containerUpdate.className === 'crud-container__update-single hide'){
+    containerUpdate.className = 'crud-container__update-single show'
+  } else {
+    containerUpdate.className = 'crud-container__update-single hide'
+  }
+})
+displayDeleteShopButton.addEventListener('click', () => {
+  if(containerDelete.className === 'crud-container__delete-single hide'){
+    containerDelete.className = 'crud-container__delete-single show'
+  } else {
+    containerDelete.className = 'crud-container__delete-single hide'
+  }
+})
