@@ -30,6 +30,13 @@ ShopController.get('/', async (req, res, next) => {
             res.json(result)
         })
         .catch(error => console.log(new Error(error)))
+
+    // try {
+    //     let result = await shopModel.find()
+    //     res.json(result)
+    // } catch (error) {
+    //     next(error)
+    // }
 })
 
 // RETURN A SINGLE SHOP - shops/:shop_Id?

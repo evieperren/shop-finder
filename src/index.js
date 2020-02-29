@@ -4,9 +4,10 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 
 mongoose.connect('mongodb://localhost:27014/shopDB', { useNewUrlParser: true })
-const db = mongoose.connection
+const db = mongoose.connection // is this needed
 const app = express()
 
+// change to use promise syntax
 db.once('open', function () {
     app.use(cors())
     app.use(bodyParser.urlencoded({ extended : true }))
